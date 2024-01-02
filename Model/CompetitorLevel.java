@@ -2,8 +2,8 @@ package Model;
 
 public enum CompetitorLevel {
     NOVICE(1, 12, 20),
-    INTERMEDIATE(2, 15, 30),
-    EXPERT(4, 18, 60);
+    INTERMEDIATE(2, 18, 30),
+    EXPERT(4, 25, 55);
 
     private final int scoreWeight;
     private final int minAge;

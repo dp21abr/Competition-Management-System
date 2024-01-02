@@ -14,24 +14,46 @@ This gives him an overall score of 1.0 specific details for Boxing Competitor.
 Competitor number 1004, name Sharuk Khan, country Canada.
 Sharuk Khan is a EXPERT aged 51 and received these scores: [2, 2, 2]
 This gives him an overall score of 2.0 specific details for Cycling Competitor.
+Competitor number 1005, name Riya Sharma, country Mauritius.
+Riya Sharma is a INTERMEDIATE aged 26 and received these scores: [6, 6, 6]
+This gives him an overall score of 6.0 specific details for Cycling Competitor.
+Competitor number 1006, name Dhairyaa Mistry, country Europe.
+Dhairyaa Mistry is a INTERMEDIATE aged 23 and received these scores: [0, 0, 0]
+This gives him an overall score of 0.0 specific details for Boxing Competitor.
+Competitor number 1007, name Ann Sthen, country UK.
+Ann Sthen is a INTERMEDIATE aged 23 and received these scores: [5, 2, 1]
+This gives him an overall score of 3.5 specific details for Cycling Competitor.
+Competitor number 1008, name George Beth Shon, country US.
+George Shon is a EXPERT aged 31 and received these scores: [2, 6, 5]
+This gives him an overall score of 4.333333333333333 specific details for Boxing Competitor.
+Competitor number 1009, name Harry Patrick, country Africa.
+Harry Patrick is a NOVICE aged 16 and received these scores: [6, 2, 9]
+This gives him an overall score of 9.0 specific details for Cycling Competitor.
+Competitor number 1010, name Rod Ston, country Canada.
+Rod Ston is a EXPERT aged 38 and received these scores: [4, 8, 6]
+This gives him an overall score of 6.0 specific details for Boxing Competitor.
 
 
 Competitor with Highest Overall Score:
-Competitor number 1001, name DD VV, country India.
-DD VV is a NOVICE aged 15 and received these scores: [5, 5, 5]
-This gives him an overall score of 5.0 specific details for Boxing Competitor.
+Competitor number 1009, name Harry Patrick, country Africa.
+Harry Patrick is a NOVICE aged 16 and received these scores: [6, 2, 9]
+This gives him an overall score of 9.0 specific details for Cycling Competitor.
 
 Summary Statistics:
-Average Score: 3.0
-Total Score: 15.0
-Maximum Score: 5.0
-Minimum Score: 1.0
+Average Score: 3.9848484848484844
+Total Score: 43.83333333333333
+Maximum Score: 9.0
+Minimum Score: 0.0
 
 
 Frequency Report:
-Score 1: 3 times
-Score 2: 3 times
+Score 0: 3 times
+Score 1: 4 times
+Score 2: 6 times
 Score 3: 3 times
-Score 4: 3 times
-Score 5: 3 times
+Score 4: 4 times
+Score 5: 5 times
+Score 6: 6 times
+Score 8: 1 times
+Score 9: 1 times
 

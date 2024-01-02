@@ -21,16 +21,16 @@ public class StaffList {
         Name staffName9 = new Name("Sue Sevnchi");
         Name staffName10 = new Name("Himan Oku");
 
-        Staff s1 = new OfficialsStaff(10, staffName1, StaffLevel.SENIOR);
-        Staff s2 = new OfficialsStaff(11, staffName2, StaffLevel.SENIOR);
-        Staff s3 = new OfficialsStaff(12, staffName3, StaffLevel.SENIOR);
-        Staff s4 = new DataEntryStaff(13, staffName4, StaffLevel.INTERMEDIATE);
-        Staff s5 = new DataEntryStaff(14, staffName5, StaffLevel.INTERMEDIATE);
-        Staff s6 = new DataEntryStaff(15, staffName6, StaffLevel.ASSOCIATE);
-        Staff s7 = new DataEntryStaff(16, staffName7, StaffLevel.ASSOCIATE);
-        Staff s8 = new Staff(16, staffName8, StaffLevel.ASSOCIATE);
-        Staff s9 = new Staff(16, staffName9, StaffLevel.INTERMEDIATE);
-        Staff s10 = new Staff(16, staffName10, StaffLevel.SENIOR);
+        Staff s1 = new OfficialsStaff(110, staffName1, StaffLevel.SENIOR);
+        Staff s2 = new OfficialsStaff(111, staffName2, StaffLevel.SENIOR);
+        Staff s3 = new OfficialsStaff(112, staffName3, StaffLevel.SENIOR);
+        Staff s4 = new DataEntryStaff(113, staffName4, StaffLevel.INTERMEDIATE);
+        Staff s5 = new DataEntryStaff(114, staffName5, StaffLevel.INTERMEDIATE);
+        Staff s6 = new DataEntryStaff(115, staffName6, StaffLevel.ASSOCIATE);
+        Staff s7 = new DataEntryStaff(116, staffName7, StaffLevel.ASSOCIATE);
+        Staff s8 = new Staff(117, staffName8, StaffLevel.ASSOCIATE);
+        Staff s9 = new Staff(118, staffName9, StaffLevel.INTERMEDIATE);
+        Staff s10 = new Staff(119, staffName10, StaffLevel.SENIOR);
 
         staffList.add(s1);
         staffList.add(s2);
@@ -47,6 +47,7 @@ public class StaffList {
     public StaffList() {
         staffList = new ArrayList<>();
         this.competitors = new ArrayList<>();
+        loadStaff();
     }
 
     // adds user to our collection

@@ -5,3 +5,7 @@
 1004, Sharuk Khan, Canada, EXPERT, 51, SK123@gmail.com, [2, 2, 2], Cycling, 2.0
 1005, Riya Sharma, Mauritius, INTERMEDIATE, 26, riya234@gmail.com, [6, 6, 6], Cycling, 6.0
 1006, Dhairyaa Mistry, Europe, INTERMEDIATE, 23, DDmistry@gmail.com, [0, 0, 0], Boxing, 0.0
+1007, Ann Sthen, UK, INTERMEDIATE, 23, annsthen234@gmail.com, [5, 2, 1], Cycling, 3.5
+1008, George Beth Shon, US, EXPERT, 31, georgeBS@gmail.com, [2, 6, 5], Boxing, 4.333333333333333
+1009, Harry Patrick, Africa, NOVICE, 16, harry2468@gmail.com, [6, 2, 9], Cycling, 9.0
+1010, Rod Ston, Canada, EXPERT, 38, Rston23@gmail.com, [4, 8, 6], Boxing, 6.0
