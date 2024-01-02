@@ -3,3 +3,4 @@
 1002, DP Patel, Nigeria, INTERMEDIATE, 18, Dp@gmail.com, [4, 4, 4], Cycling, 4.0
 1003, Salman Khan, India, EXPERT, 25, salman@gmail.com, [1, 1, 1], Boxing, 1.0
 1004, Sharuk Khan, Canada, EXPERT, 51, SK123@gmail.com, [2, 2, 2], Cycling, 2.0
+1005, Riya Sharma, Mauritius, INTERMEDIATE, 26, riya234@gmail.com, [6, 6, 6], Cycling, 6.0

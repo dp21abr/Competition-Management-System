@@ -27,7 +27,7 @@ public class UserController {
         //load staff data from file
         BufferedReader buff = null;
         try {
-            buff = new BufferedReader(new FileReader("competitordata.txt"));
+            buff = new BufferedReader(new FileReader(databaseFile));
             String inputLine = buff.readLine();  //read first line
             while(inputLine != null){
                 processLine(inputLine);
@@ -225,7 +225,7 @@ public class UserController {
                     competitorList.registerCompetitor(competitor);
 
                     // Call the new method to save competitors to the file
-                    competitorList.saveCompetitors("competitordata.txt");
+                    competitorList.saveCompetitors(databaseFile);
 
                     // Close the registration frame
                     registrationFrame.dispose();
@@ -246,7 +246,7 @@ public class UserController {
                     competitorList.registerCompetitor(competitor);
 
                     // Call the new method to save competitors to the file
-                    competitorList.saveCompetitors("competitordata.txt");
+                    competitorList.saveCompetitors(databaseFile);
 
                     // Close the registration frame
                     registrationFrame.dispose();
@@ -330,7 +330,7 @@ public class UserController {
                             scores[i] = Integer.parseInt(scoreStrings[i].trim());
                         }
                         competitor.setScoreArray(scores);
-                        competitorList.saveCompetitors("competitordata.txt");
+                        competitorList.saveCompetitors(databaseFile);
 
                         JOptionPane.showMessageDialog(scoresFrame, "Scores updated successfully.");
                     } else {
@@ -366,7 +366,7 @@ public class UserController {
                         competitor.setOverallScore(overallScore);
 
                         // Update the data in the file
-                        competitorList.saveCompetitors("competitordata.txt");
+                        competitorList.saveCompetitors(databaseFile);
 
                         // Display overall score in a message dialog
                         JOptionPane.showMessageDialog(scoresFrame, "Competitor Overall Score: " + overallScore);
