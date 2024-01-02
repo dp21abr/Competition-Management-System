@@ -4,6 +4,7 @@ public class Staff {
     private int staffID;
     private Name name;
     private StaffLevel level;
+    private String StaffType;
 
     public Staff(int staffID, Name name, StaffLevel level) {
         this.staffID = staffID;
