@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class CompetitorView extends JPanel {
+public class UserView extends JPanel {
     private JButton registerButton;
     private JButton viewScoresButton;
     private JButton viewTableButton;
@@ -15,7 +15,7 @@ public class CompetitorView extends JPanel {
     private JButton removeCompetitorButton;
     private JButton closeButton;
 
-    public CompetitorView() {
+    public UserView() {
         registerButton = new JButton("Register Competitor");
         registerButton.setPreferredSize(new Dimension(278, 40));
         viewScoresButton = new JButton("View/Edit Scores");

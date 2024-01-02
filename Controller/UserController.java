@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.*;
-import View.CompetitorView;
+import View.UserView;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -17,11 +17,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class CompetitorController {
+public class UserController {
 
     private String databaseFile = "competitordata.txt";
     private CompetitorList competitorList = new CompetitorList();
-    private CompetitorView view;
+    private UserView view;
 
     private void addCompetitors() {
         //load staff data from file
@@ -102,7 +102,7 @@ public class CompetitorController {
     }
 
 
-    public CompetitorController(CompetitorView view){
+    public UserController(UserView view){
         this.view = view;
         addCompetitors();
 

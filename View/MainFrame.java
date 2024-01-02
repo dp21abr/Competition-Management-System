@@ -1,6 +1,6 @@
 package View;
 
-import Controller.CompetitorController;
+import Controller.UserController;
 
 import java.awt.*;
 import javax.swing.*;
@@ -12,9 +12,9 @@ public class MainFrame extends JFrame{
         super("Competition Management System ");
         cardLayout = new CardLayout();
 
-        CompetitorView view = new CompetitorView();
+        UserView view = new UserView();
         setLayout(cardLayout);
-        new CompetitorController(view);
+        new UserController(view);
 
         add(view, "Competitor View");
 
