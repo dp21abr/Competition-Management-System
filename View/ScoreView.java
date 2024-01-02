@@ -9,19 +9,23 @@ import Model.*;
 
 public class ScoreView extends JFrame {
     private CompetitorList competitorList;
+    private StaffList staffList = new StaffList();
 
     public ScoreView(CompetitorList competitorList) {
         super("View/Edit Scores");
         this.competitorList = competitorList;
 
-        setSize(300, 200);
-        setLayout(new GridLayout(4, 2));
+        setSize(400, 300);
+        setLayout(new GridLayout(5, 3));
 
         JLabel competitorNumberLabel = new JLabel("Competitor Number:");
         JTextField competitorNumberField = new JTextField();
 
         JLabel scoresLabel = new JLabel("Scores:");
         JTextField scoresField = new JTextField();
+
+        JLabel staffIDLabel = new JLabel("StaffID:");
+        JTextField staffIDField = new JTextField();
 
         JButton viewScoresButton = new JButton("View Scores");
         JButton editScoresButton = new JButton("Edit Scores");
@@ -38,7 +42,7 @@ public class ScoreView extends JFrame {
         editScoresButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                editScores(competitorNumberField.getText(), scoresField.getText());
+                editScores(staffIDField.getText(), competitorNumberField.getText(), scoresField.getText());
             }
         });
 
@@ -56,6 +60,8 @@ public class ScoreView extends JFrame {
             }
         });
 
+        add(staffIDLabel);
+        add(staffIDField);
         add(competitorNumberLabel);
         add(competitorNumberField);
         add(scoresLabel);
@@ -79,20 +85,27 @@ public class ScoreView extends JFrame {
         }
     }
 
-    private void editScores(String competitorNumber, String scoresInput) {
+    private void editScores(String staffId, String competitorNumber, String scoresInput) {
+        int StaffID = Integer.parseInt(staffId);
         int number = Integer.parseInt(competitorNumber);
         Competitor competitor = competitorList.getCompetitorByNumber(number);
 
-        if (competitor != null) {
-            String[] scoreStrings = scoresInput.split(",");
-            int[] scores = Arrays.stream(scoreStrings).map(String::trim).mapToInt(Integer::parseInt).toArray();
-            competitor.setScoreArray(scores);
-            competitorList.saveCompetitors("competitordata.txt");
-            showSuccess("Scores updated successfully.");
+        Staff staff = staffList.getStaffByID(StaffID);
+        if (staff.getStaffLevel() == StaffLevel.SENIOR || staff.getStaffLevel() == StaffLevel.INTERMEDIATE) {
+            if (competitor != null) {
+                String[] scoreStrings = scoresInput.split(",");
+                int[] scores = Arrays.stream(scoreStrings).map(String::trim).mapToInt(Integer::parseInt).toArray();
+                competitor.setScoreArray(scores);
+                competitorList.saveCompetitors("competitordata.txt");
+                showSuccess("Scores updated successfully.");
+            } else {
+                showError("Competitor not found with number: " + number);
+            }
         } else {
-            showError("Competitor not found with number: " + number);
+            showError("The Staff with the Staff ID " + StaffID + " does not have the right to edit score");
         }
     }
+
 
     private void calculateOverallScore(String competitorNumber, String scoresInput) {
         int number = Integer.parseInt(competitorNumber);

@@ -9,19 +9,24 @@ import Model.*;
 
 public class EditView extends JFrame {
     private CompetitorList competitorList;
+    private StaffList staffList = new StaffList();
 
     public EditView(CompetitorList competitorList) {
         super("Edit Competitor Details");
         this.competitorList = competitorList;
 
-        setSize(400, 300);
+        setSize(500, 400);
 
         JPanel editPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new Insets(5, 5, 5, 5);
 
+
         // Components
+        JLabel staffIDLabel = new JLabel("StaffID:");
+        JTextField staffIDField = new JTextField(25);
+
         JLabel competitorNumberLabel = new JLabel("Competitor Number:");
         JTextField competitorNumberField = new JTextField(25);
 
@@ -56,6 +61,13 @@ public class EditView extends JFrame {
 
         gridBagConstraints.gridx = 1;
         editPanel.add(competitorNumberField, gridBagConstraints);
+
+        gridBagConstraints.gridy++;
+        gridBagConstraints.gridx = 0;
+        editPanel.add(staffIDLabel, gridBagConstraints);
+
+        gridBagConstraints.gridx = 1;
+        editPanel.add(staffIDField, gridBagConstraints);
 
         gridBagConstraints.gridy++;
         gridBagConstraints.gridx = 0;
@@ -118,31 +130,36 @@ public class EditView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     int competitorNumber = Integer.parseInt(competitorNumberField.getText());
+                    int StaffID = Integer.parseInt(staffIDField.getText());
 
-                    // Get the existing competitor
-                    Competitor existingCompetitor = competitorList.getCompetitorByNumber(competitorNumber);
+                    Staff staff = staffList.getStaffByID(StaffID);
+                    if (staff.getStaffLevel() == StaffLevel.SENIOR) {
+                        Competitor existingCompetitor = competitorList.getCompetitorByNumber(competitorNumber);
 
-                    if (existingCompetitor != null) {
-                        // Get the new values from the fields
-                        String newName = (nameField.getText().isEmpty()) ? existingCompetitor.getName().getFullName() : nameField.getText();
-                        String newCountry = (countryField.getText().isEmpty()) ? existingCompetitor.getCountry() : countryField.getText();
-                        String newLevel = (String) levelComboBox.getSelectedItem();
-                        String newCategory = (String) categoryComboBox.getSelectedItem();
-                        int newAge = (ageField.getText().isEmpty()) ? existingCompetitor.getAge() : Integer.parseInt(ageField.getText());
-                        String newEmail = (emailField.getText().isEmpty()) ? existingCompetitor.getEmail() : emailField.getText();
-                        int[] newScores = (scoresField.getText().isEmpty()) ? existingCompetitor.getScoreArray() : Arrays.stream(scoresField.getText().split(","))
-                                .map(String::trim)
-                                .mapToInt(Integer::parseInt)
-                                .toArray();
+                        if (existingCompetitor != null) {
+                            // Get the new values from the fields
+                            String newName = (nameField.getText().isEmpty()) ? existingCompetitor.getName().getFullName() : nameField.getText();
+                            String newCountry = (countryField.getText().isEmpty()) ? existingCompetitor.getCountry() : countryField.getText();
+                            String newLevel = (String) levelComboBox.getSelectedItem();
+                            String newCategory = (String) categoryComboBox.getSelectedItem();
+                            int newAge = (ageField.getText().isEmpty()) ? existingCompetitor.getAge() : Integer.parseInt(ageField.getText());
+                            String newEmail = (emailField.getText().isEmpty()) ? existingCompetitor.getEmail() : emailField.getText();
+                            int[] newScores = (scoresField.getText().isEmpty()) ? existingCompetitor.getScoreArray() : Arrays.stream(scoresField.getText().split(","))
+                                    .map(String::trim)
+                                    .mapToInt(Integer::parseInt)
+                                    .toArray();
 
-                        // Edit the competitor details
-                        competitorList.editCompetitorDetails(competitorNumber, new Name(newName), newCountry, newLevel, newAge, newEmail, newScores, newCategory);
-                        JOptionPane.showMessageDialog(EditView.this, "Competitor details edited successfully.");
-                        dispose();
+                            // Edit the competitor details
+                            competitorList.editCompetitorDetails(competitorNumber, new Name(newName), newCountry, newLevel, newAge, newEmail, newScores, newCategory);
+                            JOptionPane.showMessageDialog(EditView.this, "Competitor details edited successfully.");
+                            dispose();
+                        } else {
+                            JOptionPane.showMessageDialog(EditView.this, "Competitor not found with number: " + competitorNumber, "Error", JOptionPane.ERROR_MESSAGE);
+                        }
                     } else {
-                        JOptionPane.showMessageDialog(EditView.this, "Competitor not found with number: " + competitorNumber, "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(EditView.this, "The Staff with the Staff ID " + StaffID + " does not have the right to edit competitor");
                     }
-                } catch (NumberFormatException ex) {
+                } catch(NumberFormatException ex){
                     JOptionPane.showMessageDialog(EditView.this, "Invalid competitor number or input.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             };

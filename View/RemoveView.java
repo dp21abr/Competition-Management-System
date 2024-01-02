@@ -8,7 +8,7 @@ import Model.*;
 
 public class RemoveView extends JFrame {
     private CompetitorList competitorList;
-
+    private StaffList staffList = new StaffList();
     public RemoveView(CompetitorList competitorList) {
         super("Remove Competitor");
         this.competitorList = competitorList;
@@ -21,6 +21,9 @@ public class RemoveView extends JFrame {
         gridBagConstraints.insets = new Insets(5, 5, 5, 5);
 
         // Components
+        JLabel staffIDLabel = new JLabel("StaffID:");
+        JTextField staffIDField = new JTextField(25);
+
         JLabel competitorNumberLabel = new JLabel("Competitor Number:");
         JTextField competitorNumberField = new JTextField(25);
 
@@ -34,6 +37,13 @@ public class RemoveView extends JFrame {
         gridBagConstraints.gridx = 1;
         editPanel.add(competitorNumberField, gridBagConstraints);
 
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy++;
+        editPanel.add(staffIDLabel, gridBagConstraints);
+
+        gridBagConstraints.gridx = 1;
+        editPanel.add(staffIDField, gridBagConstraints);
+
         gridBagConstraints.gridy++;
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridwidth = 2;
@@ -44,19 +54,24 @@ public class RemoveView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // Prompt the user for the competitor number to remove
                 int competitorNumberInput = Integer.parseInt(competitorNumberField.getText());
-
+                int StaffID = Integer.parseInt(staffIDField.getText());
                 // Validate the input
-                if (competitorNumberInput != 0) {
-                    try {
-                        int competitorNumber = competitorNumberInput;
-                        competitorList.removeCompetitor(competitorNumber);
-                        JOptionPane.showMessageDialog(RemoveView.this, "Competitor removed successfully.");
-                        dispose();
-                    } catch (NumberFormatException ex) {
+                Staff staff = staffList.getStaffByID(StaffID);
+                if (staff.getStaffLevel() == StaffLevel.SENIOR) {
+                    if (competitorNumberInput != 0) {
+                        try {
+                            int competitorNumber = competitorNumberInput;
+                            competitorList.removeCompetitor(competitorNumber);
+                            JOptionPane.showMessageDialog(RemoveView.this, "Competitor removed successfully.");
+                            dispose();
+                        } catch (NumberFormatException ex) {
+                            JOptionPane.showMessageDialog(RemoveView.this, "Invalid Competitor Number", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } else {
                         JOptionPane.showMessageDialog(RemoveView.this, "Invalid Competitor Number", "Error", JOptionPane.ERROR_MESSAGE);
                     }
-                } else {
-                    JOptionPane.showMessageDialog(RemoveView.this, "Invalid Competitor Number", "Error", JOptionPane.ERROR_MESSAGE);
+                } else{
+                    JOptionPane.showMessageDialog(RemoveView.this, "The Staff with the Staff ID " + StaffID + " does not have the right to remove competitor");
                 }
             }
         });

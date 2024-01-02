@@ -6,12 +6,46 @@ import java.util.ArrayList;
 public class StaffList {
 
     private ArrayList<Staff> staffList;
-    private CompetitorList competitorList;
+
     private ArrayList<Competitor> competitors;
 
+    private void loadStaff() {
+        Name staffName1 = new Name("Lynn Roy Son");
+        Name staffName2 = new Name("Nils Kim Jong");
+        Name staffName3 = new Name("Donald Trump");
+        Name staffName4 = new Name("Putin Maksim");
+        Name staffName5 = new Name("Minul Don Sub");
+        Name staffName6 = new Name("Don Jackson");
+        Name staffName7 = new Name("John Luke");
+        Name staffName8 = new Name("Devansh Mehtha");
+        Name staffName9 = new Name("Sue Sevnchi");
+        Name staffName10 = new Name("Himan Oku");
+
+        Staff s1 = new OfficialsStaff(10, staffName1, StaffLevel.SENIOR);
+        Staff s2 = new OfficialsStaff(11, staffName2, StaffLevel.SENIOR);
+        Staff s3 = new OfficialsStaff(12, staffName3, StaffLevel.SENIOR);
+        Staff s4 = new DataEntryStaff(13, staffName4, StaffLevel.INTERMEDIATE);
+        Staff s5 = new DataEntryStaff(14, staffName5, StaffLevel.INTERMEDIATE);
+        Staff s6 = new DataEntryStaff(15, staffName6, StaffLevel.ASSOCIATE);
+        Staff s7 = new DataEntryStaff(16, staffName7, StaffLevel.ASSOCIATE);
+        Staff s8 = new Staff(16, staffName8, StaffLevel.ASSOCIATE);
+        Staff s9 = new Staff(16, staffName9, StaffLevel.INTERMEDIATE);
+        Staff s10 = new Staff(16, staffName10, StaffLevel.SENIOR);
+
+        staffList.add(s1);
+        staffList.add(s2);
+        staffList.add(s3);
+        staffList.add(s4);
+        staffList.add(s5);
+        staffList.add(s6);
+        staffList.add(s7);
+        staffList.add(s8);
+        staffList.add(s9);
+        staffList.add(s10);
+
+    }
     public StaffList() {
         staffList = new ArrayList<>();
-        this.competitorList = new CompetitorList();
         this.competitors = new ArrayList<>();
     }
 
@@ -28,39 +62,8 @@ public class StaffList {
         }
         return null; // Staff not found
     }
-
     public ArrayList<Competitor> getCompetitors() {
         return competitors;
-    }
-
-    public void registerCompetitor(Staff staff, Competitor competitor) {
-        if (staff.getStaffLevel() == StaffLevel.SENIOR) {
-            getCompetitors().add(competitor);
-            competitorList.registerCompetitor(competitor); // Delegate to CompetitorList
-        }
-    }
-
-    public void removeCompetitor(Staff staff, int competitorNumber) {
-        if (staff.getStaffLevel() == StaffLevel.SENIOR) {
-            Competitor competitorToRemove = null;
-            for (Competitor competitor : getCompetitors()) {
-                if (competitor.getCompetitorNumber() == competitorNumber) {
-                    competitorToRemove = competitor;
-                    break;
-                }
-            }
-            if (competitorToRemove != null) {
-                getCompetitors().remove(competitorToRemove);
-                competitorList.removeCompetitor(competitorNumber); // Delegate to CompetitorList
-            }
-        }
-    }
-
-    public void amendCompetitorDetails(Staff staff, int competitorNumber, Name newName, String newCountry,
-                                       String newLevel, int newAge, String newEmail, int[] newScores, String newCategory) {
-        if (staff.getStaffLevel() == StaffLevel.INTERMEDIATE) {
-            competitorList.editCompetitorDetails(competitorNumber, newName, newCountry, newLevel, newAge, newEmail, newScores, newCategory);
-        }
     }
 
     private Competitor getCompetitorByNumber(int competitorNumber) {
