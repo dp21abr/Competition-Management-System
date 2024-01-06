@@ -425,26 +425,5 @@ public class CompetitorList {
         }
     }
 
-    public static boolean fetchCompetitor(String id, String name) {
-        String staffdataFilePath = "competitordata.csv";
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(staffdataFilePath))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                // Assuming the format is ID,Name,StaffType
-                String[] parts = line.split(",");
-                if (parts[0].trim().equals(id) && parts[1].trim().equals(name)) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-
 }
 
