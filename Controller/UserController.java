@@ -17,7 +17,7 @@ import java.util.Collections;
 
 public class UserController {
 
-    private String databaseFile = "competitordata.txt";
+    private String databaseFile = "competitordata.csv";
     private CompetitorList competitorList = new CompetitorList();
     private UserView view;
 
@@ -25,7 +25,7 @@ public class UserController {
         //load staff data from file
         BufferedReader buff = null;
         try {
-            buff = new BufferedReader(new FileReader("competitordata.txt"));
+            buff = new BufferedReader(new FileReader("competitordata.csv"));
             String inputLine = buff.readLine();  //read first line
             while(inputLine != null){
                 processLine(inputLine);
